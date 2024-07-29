@@ -14,7 +14,7 @@ const HomePage = () => {
         borderRadius='lg'
         borderWidth='1px'
       >
-      <Text fontSize='4xl' fontFamily={'Work sans'} color={'black'}>Chat</Text>  
+      <Text fontSize='4xl' fontFamily='Work sans' color='black'>Chat</Text>  
       </Box>
     </Container>
   )
