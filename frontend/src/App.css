@@ -3,4 +3,8 @@
 .App{
     min-height: 100vh;
     display: flex;
+    background-image: url('./Assets/Images/5605216.jpg');
+    background-size:cover ;
+    background-position: center;
+    color: black;
 }
