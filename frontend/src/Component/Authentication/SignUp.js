@@ -35,9 +35,9 @@ const SignUp = () => {
         if (pics.type === 'image/jpeg' || pics.type === 'image/png'){
             const data = new FormData()
             data.append("file", pics)
-            data.append("upload_preset", "ml_default")
-            data.append("cloud_name", "de9egtgzr")
-            fetch('https://api.cloudinary.com/v1_1/de9egtgzr/image/upload',{
+            data.append("upload_preset", "testalas")
+            data.append("cloud_name", "duw6f8fm8")
+            fetch('https://api.cloudinary.com/v1_1/duw6f8fm8/image/upload',{
                 method: "post",
                 body: data
             }).then(res => res.json())
@@ -93,7 +93,7 @@ const SignUp = () => {
                     "Content-type": "application/json",
                 }
             }
-            const {data} = axios.post(
+            const {data} = await axios.post(
                 "/api/user",
                 {name, email , password, pic},
                 config

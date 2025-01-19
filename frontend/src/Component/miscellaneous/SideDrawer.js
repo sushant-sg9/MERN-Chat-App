@@ -3,6 +3,7 @@ import { Box, Text } from '@chakra-ui/layout';
 import { Avatar, Drawer, DrawerBody, DrawerContent, DrawerHeader, DrawerOverlay, Input, Menu, MenuButton, MenuItem, MenuList, Tooltip, useToast } from '@chakra-ui/react';
 import { Button } from '@chakra-ui/button';
 import { BellIcon, ChevronDownIcon } from '@chakra-ui/icons';
+import { Spinner } from '@chakra-ui/spinner';
 import { ChatState } from '../../Context/chatProvider';
 import ProfileModal from './ProfileModal';
 import { useNavigate } from 'react-router-dom';
@@ -48,8 +49,10 @@ const SideDrawer = () => {
                 },
             };
             const { data } = await axios.get(`/api/user?search=${search}`, config);
-            setLoading(false);
             setSearchResult(data);
+            // console.log(!chats.find((c) => c._id === data._id));
+            // if (!chats.find((c) => c._id === data._id)) setChats([data, ...chats]);
+            setLoading(false);
         } catch (error) {
             toast({
                 title: "Error",
@@ -87,6 +90,7 @@ const SideDrawer = () => {
                 position: 'bottom-left',
             });
         }
+        window.location.reload();
     };
 
     return (
@@ -145,10 +149,11 @@ const SideDrawer = () => {
                                 <UserListItem
                                     key={user._id}
                                     user={user}
-                                    handelFunction={() => accessChat(user._id)}
+                                    handleFunction={() => accessChat(user._id)}
                                 />
                             ))
                         )}
+                        {loading && <Spinner ml="auto" display="flex" />}
                     </DrawerBody>
                 </DrawerContent>
             </Drawer>
