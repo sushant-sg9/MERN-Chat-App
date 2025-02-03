@@ -166,6 +166,7 @@ const UpdateGroupChatModal = ({ fetchAgain, setFetchAgain, fetchMessages }) => {
             setLoading(false)
         }
      }
+     console.log(search)
 
 
     return (

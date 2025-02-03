@@ -16,8 +16,8 @@ const SideDrawer = () => {
     const [search, setSearch] = useState('');
     const [searchResult, setSearchResult] = useState([]);
     const [loading, setLoading] = useState(false);
-    const [loadingChat, setLoadingChat] = useState(false);
-    const { user, setSelectedChat, chats, setChats } = ChatState();
+    // const [loadingChat, setLoadingChat] = useState(false);
+    const { user, setSelectedChat } = ChatState();
     const { isOpen, onOpen, onClose } = useDisclosure();
 
     const navigate = useNavigate();

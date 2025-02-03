@@ -20,10 +20,10 @@ const SingleChat = ({fetchAgain, setFetchAgain}) => {
   const [newMessage, setNewMessage] = useState("");
   const [socketConnected, setSocketConnected] = useState(false)
   const toast = useToast()
-  const [typing, setTyping] = useState(false)
-  const [istyping, setIsTyping] = useState(false)
+  // const [typing, setTyping] = useState(false)
+  // const [istyping, setIsTyping] = useState(false)
 
-
+console.log(socketConnected)
   const fetchMessage = async() => {
     if(!selectedChat) return
 
