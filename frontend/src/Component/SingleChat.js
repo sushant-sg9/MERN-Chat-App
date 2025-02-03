@@ -50,7 +50,7 @@ const fetchMessage = useCallback(async () => {
     });
     setLoading(false);
   }
-}, [selectedChat, user.token, toast, socket]);
+}, [selectedChat, user.token, toast]);
 
   useEffect(()=>{
     socket = io(ENDPOINT)

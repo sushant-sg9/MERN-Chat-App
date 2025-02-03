@@ -36,7 +36,7 @@ const MyChats = ({ fetchAgain }) => {
         position: "bottom-left",
       });
     }
-  }, [user.token, toast]);
+  }, [user.token, toast], setChats);
 
   useEffect(() => {
     const userInfo = JSON.parse(localStorage.getItem("userInfo"));
