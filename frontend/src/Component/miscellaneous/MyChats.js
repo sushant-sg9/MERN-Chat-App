@@ -43,7 +43,7 @@ const MyChats = ({ fetchAgain }) => {
     const userInfo = JSON.parse(localStorage.getItem("userInfo"));
       setLoggedUser(userInfo);
     fetchChats();
-  }, [fetchAgain]);
+  }, [fetchAgain, fetchChats]);
 
   return (
     <Box

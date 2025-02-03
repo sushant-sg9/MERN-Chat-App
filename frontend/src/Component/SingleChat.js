@@ -58,13 +58,13 @@ console.log(socketConnected)
     socket = io(ENDPOINT)
     socket.emit("setup", user)
     socket.on('connection', ()=> setSocketConnected(true))
-  },[]);
+  },[user]);
 
 
   useEffect(() => {
     fetchMessage()
     selectedChatCompare = selectedChat;
-  },[selectedChat])
+  },[selectedChat,fetchMessage])
 
   useEffect(() => {
     socket.on('message received',(newMessageRecevied) => {
