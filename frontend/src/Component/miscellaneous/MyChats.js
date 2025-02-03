@@ -2,7 +2,7 @@ import { AddIcon } from "@chakra-ui/icons";
 import { Box, Stack, Text } from "@chakra-ui/layout";
 import { useToast } from "@chakra-ui/toast";
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import ChatLoading from "../ChatLoading";
 import { Button } from "@chakra-ui/react";
 import { ChatState } from "../../Context/chatProvider";
@@ -15,21 +15,20 @@ const MyChats = ({ fetchAgain }) => {
 
   const toast = useToast();
 
-  const fetchChats = async () => {
-    // console.log(user._id);
+  const fetchChats = useCallback(async () => {
     try {
       const config = {
         headers: {
           Authorization: `Bearer ${user.token}`,
         },
       };
-
+  
       const { data } = await axios.get("/api/chat", config);
       setChats(data);
-      console.log(chats)
+      console.log(data); // Changed from chats to data
     } catch (error) {
       toast({
-        title: "Error Occured!",
+        title: "Error Occurred!",
         description: "Failed to Load the chats",
         status: "error",
         duration: 5000,
@@ -37,7 +36,7 @@ const MyChats = ({ fetchAgain }) => {
         position: "bottom-left",
       });
     }
-  };
+  }, [user.token, toast]);
 
   useEffect(() => {
     const userInfo = JSON.parse(localStorage.getItem("userInfo"));

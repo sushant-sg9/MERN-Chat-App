@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import { ChatState } from '../Context/chatProvider'
 import { Box, FormControl, IconButton, Input, Spinner, Text, useToast } from '@chakra-ui/react'
 import { ArrowBackIcon } from '@chakra-ui/icons'
@@ -24,35 +24,33 @@ const SingleChat = ({fetchAgain, setFetchAgain}) => {
   // const [istyping, setIsTyping] = useState(false)
 
 console.log(socketConnected)
-  const fetchMessage = async() => {
-    if(!selectedChat) return
+const fetchMessage = useCallback(async () => {
+  if (!selectedChat) return;
 
-    try {
-      const config = {
-        headers: {
-          Authorization: `Bearer ${user.token}`
-        }
+  try {
+    const config = {
+      headers: {
+        Authorization: `Bearer ${user.token}`
       }
-      setLoading(true)
-      const {data} = await axios.get(`/api/message/${selectedChat._id}`,
-        config
-      );
-      setMessages(data);
-      setLoading(false);
+    };
+    setLoading(true);
+    const { data } = await axios.get(`/api/message/${selectedChat._id}`, config);
+    setMessages(data);
+    setLoading(false);
 
     socket.emit('join chat', selectedChat._id);
-    } catch (error) {
-      toast({
-        title: "Error",
-        description: "Failed to Load message",
-        status: 'error',
-        duration: 5000,
-        isClosable: true,
-        position: 'bottom-left',
+  } catch (error) {
+    toast({
+      title: "Error",
+      description: "Failed to Load message",
+      status: 'error',
+      duration: 5000,
+      isClosable: true,
+      position: 'bottom-left',
     });
-    setLoading(false)
-    }
+    setLoading(false);
   }
+}, [selectedChat, user.token, toast, socket]);
 
   useEffect(()=>{
     socket = io(ENDPOINT)
