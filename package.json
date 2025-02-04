@@ -6,7 +6,7 @@
   "scripts": {
     "start": "nodemon backend/server.js",
     "server": "nodemon backend/server.js",
-    "build": "cd frontend && npm install && npm run build && cd ../backend && npm install"
+     "build": "npm install --legacy-peer-deps && npm install --legacy-peer-deps --prefix frontend && npm run build --prefix frontend"
   },
   "author": "Sushant Ghadge",
   "license": "ISC",
