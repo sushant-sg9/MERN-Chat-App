@@ -7,6 +7,13 @@ const chatRoutes = require('./routes/chatRoutes')
 const messageRoutes = require('./routes/messageRoutes')
 const { notFound, errorHandler } = require("./middleware/errorMiddleware");
 const path = require('path')
+const cors = require("cors");
+
+
+app.use(cors({
+  origin: "https://mern-messenger-1bnh.onrender.com",
+  credentials: true
+}));
 
 dotenv.config();
 ConnectDB()
