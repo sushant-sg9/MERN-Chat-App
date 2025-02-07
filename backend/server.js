@@ -15,11 +15,15 @@ ConnectDB()
 const app = express();
 app.use(express.json())
 
+const corsOptions = {
+  origin: process.env.NODE_ENV === "production" 
+          ? "https://mern-chat-app-ast0.onrender.com/" 
+          : "http://localhost:3000",
+  credentials: true
+};
+app.use(cors(corsOptions));
 
-// app.use(cors({
-//   origin: "https://mern-messenger-1bnh.onrender.com",
-//   credentials: true
-// }));
+
 
 // app.get("/api/chat", (req, res) => {
 //     res.send(chats);
