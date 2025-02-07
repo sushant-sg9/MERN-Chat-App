@@ -16,10 +16,10 @@ const app = express();
 app.use(express.json())
 
 
-app.use(cors({
-  origin: "https://mern-messenger-1bnh.onrender.com",
-  credentials: true
-}));
+// app.use(cors({
+//   origin: "https://mern-messenger-1bnh.onrender.com",
+//   credentials: true
+// }));
 
 // app.get("/api/chat", (req, res) => {
 //     res.send(chats);
