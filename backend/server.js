@@ -61,7 +61,6 @@ io.on("connection", (socket) => {
   console.log("Connected to socket.io");
   
   socket.on("setup", (userData) => {
-    // Create a room for the user
     socket.join(userData._id);
     console.log("User setup: " + userData._id);
     socket.emit("connected");
